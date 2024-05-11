@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'  // Kotlin Annotation Processing Tool
+}
+
+android {
+    namespace 'com.example.taskmanagerapp'
+    compileSdk 34  // Compile with SDK version 34
+
+    defaultConfig {
+        applicationId "com.example.taskmanagerapp"
+        minSdk 21  // Minimum SDK version supported
+        targetSdk 34  // Target SDK version
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8  // Use Java 8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'  // Ensure JVM target version is consistent
+    }
+
+    // Enable both viewBinding and dataBinding
+    buildFeatures {
+        viewBinding true  // Enables view binding
+        dataBinding true  // Enables data binding
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Room database dependencies
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"  // Annotation processor for Room
+    implementation "androidx.room:room-ktx:$room_version"  // Kotlin extensions for Room
+}

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SnapTask</string>
+    <string name="snap_task_text">
+    <font color="#FFFFFF">Snap</font><font color="#DAA520" style="bold">Task</font>
+</string>
+
+</resources>
